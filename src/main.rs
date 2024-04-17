@@ -1,3 +1,4 @@
+//! Simple "guessing" game for everyday-use powers of 2 intended for programmers.
 use noiserand::NoiseRand;
 use rand_core::RngCore;
 use std::io::stdin;

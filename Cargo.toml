@@ -6,6 +6,10 @@ categories = [ "command-line-utilities", "games" ]
 keywords = [ "power-of-2" ]
 authors = [ "software9119.technology" ]
 license = "MIT"
+description = "Power of 2 guessing game for programers."
+repository = "https://github.com/bravequickcleverfibreyarn/pow2game"
+homepage = "https://github.com/bravequickcleverfibreyarn/pow2game"
+readme = "https://github.com/bravequickcleverfibreyarn/pow2game/blob/main/README.md"
 
 [dependencies]
 noiserand = "1.0.0"
