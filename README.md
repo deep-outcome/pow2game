@@ -5,10 +5,10 @@
 - See ANU QRNG (Quantum Random Number Generator) at https://qrng.anu.edu.au/.
 
 ### Show
-![Presentation](https://github.com/bravequickcleverfibreyarn/pow2game/blob/main/pre/show.png)
+![Presentation](http://software9119.technology/files/pow2game/show.png)
 
 
 ### Gratitude
 You are welcome to make donation if you like either game, QRNG or both.
 
-![Presentation](https://github.com/bravequickcleverfibreyarn/pow2game/blob/main/pre/anu-qrng.png)
+![ANU QRNG Donation](http://software9119.technology/files/pow2game/anu-qrng.png)
