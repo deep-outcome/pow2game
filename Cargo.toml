@@ -1,0 +1,12 @@
+[package]
+name = "pow2game"
+version = "1.0.0"
+edition = "2021"
+categories = [ "command-line-utilities", "games" ]
+keywords = [ "power-of-2" ]
+authors = [ "software9119.technology" ]
+license = "MIT"
+
+[dependencies]
+noiserand = "1.0.0"
+rand_core = "0.6.4"
