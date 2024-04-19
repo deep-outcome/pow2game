@@ -5,7 +5,7 @@
 - See ANU QRNG (Quantum Random Number Generator) at https://qrng.anu.edu.au/.
 
 ### Show
-![Presentation](http://software9119.technology/files/pow2game/show.png)
+![Presentation](https://github.com/bravequickcleverfibreyarn/pow2game/blob/main/pre/show.png)
 
 
 ### Gratitude
