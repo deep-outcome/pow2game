@@ -91,7 +91,7 @@ fn main() {
         let num = 2u32.pow(p);
         let (print, color) = if num == answer {
             p_ix += 1;
-            (format!("Offcourse, {}.", answer), "\x1b[0;32m")
+            (format!("Of course, {}.", answer), "\x1b[0;32m")
         } else {
             (format!("Nope, {}.", num), "\x1b[0;31m")
         };
