@@ -1,19 +1,22 @@
 //! Simple "guessing" game for everyday-use powers of 2 intended for programmers.
 use noiserand::NoiseRand;
 use rand_core::RngCore;
-use std::io::stdin;
+use std::io::{stdin, stdout, Write};
 
-fn main() {
+fn main() -> std::io::Result<()> {
     let arg = std::env::args().nth(1);
+
+    let mut stdout = stdout();
 
     let mut colorize = true;
     if let Some(arg) = arg {
         if arg == "--help" {
-            println!("\n--- HELP ---\n");
-            println!("    --help    |this help");
-            println!("    --nocolor |no output colorization\n");
+            writeln!(&mut stdout, "\n--- HELP ---\n")?;
+            writeln!(&mut stdout, "    --help    |this help")?;
+            writeln!(&mut stdout, "    --nocolor |no output colorization\n")?;
+            stdout.flush()?;
 
-            return;
+            return Ok(());
         }
 
         if arg == "--nocolor" {
@@ -21,9 +24,14 @@ fn main() {
         }
     }
 
-    println!("\n----> Welcome to the Power of 2 Game <----\n");
-    println!("Acquiring quantum fluctuations based seed. Check https://qrng.anu.edu.au/ for more.");
-    println!("\n");
+    writeln!(
+        &mut stdout,
+        "\n----> Welcome to the Power of 2 Game <----\n"
+    )?;
+    writeln!(
+        &mut stdout,
+        "Acquiring quantum fluctuations based seed. Check https://qrng.anu.edu.au/ for more.\n\n"
+    )?;
 
     let mut pows = (0..=16).collect::<Vec<u32>>();
 
@@ -33,10 +41,8 @@ fn main() {
     let rn = nr.next_u32();
     let b0 = rn.to_ne_bytes()[0];
 
-    let seed_ix = (b0 / 17) as usize;
-
     let mut ix1 = 0;
-    let mut ix2 = seed_ix;
+    let mut ix2 = (b0 / 17) as usize;
 
     while ix2 < 17 {
         let swap = pows[ix2];
@@ -60,15 +66,16 @@ fn main() {
         }
     }
 
-    println!("Serie: {:?}", pows);
+    writeln!(&mut stdout, "Serie: {:?}", pows);
 
     let mut buff = String::new();
     let mut p_ix = 0;
-    while p_ix < 17 {
+    'ml: while p_ix < 17 {
         let p = pows[p_ix];
 
-        println!("We have power: {p}.");
-        println!("Tell the result‽");
+        writeln!(&mut stdout, "We have power: {p}.")?;
+        writeln!(&mut stdout, "Tell the result‽")?;
+        stdout.flush()?;
 
         let answer: u32;
         loop {
@@ -79,13 +86,17 @@ fn main() {
             buff = buff.replace("\r", "");
 
             let parse = buff.parse::<u32>();
-
             if parse.is_ok() {
                 answer = parse.ok().unwrap();
                 break;
             }
 
-            println!("Error {:?}", buff);
+            writeln!(
+                &mut stdout,
+                "{}\n",
+                colorized(colorize, format!("Error ╏ '{}'", buff), "\x1b[0;35m")
+            )?;
+            continue 'ml;
         }
 
         let num = 2u32.pow(p);
@@ -96,8 +107,10 @@ fn main() {
             (format!("Nope, {}.", num), "\x1b[0;31m")
         };
 
-        println!("{}\n", colorized(colorize, print, color));
+        writeln!(&mut stdout, "{}\n", colorized(colorize, print, color))?;
     }
+
+    stdout.flush()
 }
 
 fn colorized(colorize: bool, mut txt: String, color: &str) -> String {
