@@ -66,7 +66,7 @@ fn main() -> std::io::Result<()> {
         }
     }
 
-    writeln!(&mut stdout, "Serie: {:?}", pows);
+    writeln!(&mut stdout, "Serie: {:?}", pows)?;
 
     let mut buff = String::new();
     let mut p_ix = 0;
