@@ -35,6 +35,7 @@ fn main() -> std::io::Result<()> {
 
     let mut pows = (0..=16).collect::<Vec<u32>>();
 
+    #[cfg(test)]
     assert_eq!(17, pows.len());
 
     let mut nr = NoiseRand::new();
