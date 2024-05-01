@@ -32,6 +32,7 @@ fn main() -> std::io::Result<()> {
         &mut stdout,
         "Acquiring quantum fluctuations based seed. Check https://qrng.anu.edu.au/ for more.\n\n"
     )?;
+    stdout.flush();
 
     let mut pows = (0..=16).collect::<Vec<u32>>();
 

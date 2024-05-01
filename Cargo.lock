@@ -381,7 +381,7 @@ dependencies = [
 
 [[package]]
 name = "pow2game"
-version = "1.1.3"
+version = "1.1.4"
 dependencies = [
  "noiserand",
  "rand_core",
