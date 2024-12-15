@@ -1,14 +1,14 @@
 [package]
 name = "pow2game"
-version = "1.1.4"
+version = "1.1.5"
 edition = "2021"
 categories = [ "command-line-utilities", "games" ]
 keywords = [ "power-of-2" ]
 authors = [ "software9119.technology" ]
 license = "MIT"
 description = "Power of 2 guessing game for programers."
-repository = "https://github.com/bravequickcleverfibreyarn/pow2game"
-homepage = "https://github.com/bravequickcleverfibreyarn/pow2game"
+repository = "https://github.com/deep-outcome/pow2game"
+exclude = ["/pre"]
 
 [dependencies]
 noiserand = "1.0.0"
